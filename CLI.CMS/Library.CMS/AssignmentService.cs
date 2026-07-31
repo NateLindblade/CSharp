@@ -43,8 +43,6 @@ namespace Library.CMS
             return quiz;
         }
  
-        // Submissions live inside the Assignment object itself, so removing the
-        // assignment removes its submissions along with it automatically.
         public static bool DeleteAssignment(Course course, int assignmentId)
         {
             var match = course.Assignments.FirstOrDefault(a => a.Id == assignmentId);
@@ -58,8 +56,6 @@ namespace Library.CMS
             return true;
         }
  
-        // newPoints/newDueDate are nullable so the caller can skip updating them
-        // (e.g. if the UI's input didn't parse) without needing two versions of this method.
         public static void UpdateAssignment(Assignment assignment, string name, string description, int? newPoints, DateTime? newDueDate)
         {
             assignment.Name = name;
@@ -76,8 +72,6 @@ namespace Library.CMS
             }
         }
  
-        // fileName/filePath are optional - existing callers that only submit
-        // text still work unchanged, since both default to null.
         public static Submission SubmitAssignment(Assignment assignment, Student student, string content, string fileName = null, string filePath = null)
         {
             var submission = new Submission
@@ -102,8 +96,6 @@ namespace Library.CMS
             submission.Grade = points;
         }
  
-        // Converts a percentage back into points, since Grade is always stored
-        // as points out of the assignment's AvailablePoints.
         public static void GradeByPercentage(Submission submission, int availablePoints, double percent)
         {
             submission.Grade = (int)Math.Round(percent / 100 * availablePoints);
@@ -114,7 +106,6 @@ namespace Library.CMS
             submission.Comment = comment;
         }
  
-        // One line per assignment: Name,Description,AvailablePoints,DueDate
         public static string BuildExportContent(Course course)
         {
             var sb = new StringBuilder();
@@ -127,12 +118,6 @@ namespace Library.CMS
             return sb.ToString();
         }
  
-        // Every valid line becomes a brand new assignment via AddAssignment,
-        // which never copies submissions - matching #40's copy behavior.
-        // Unlike roster import (#41), this isn't idempotent: importing the
-        // same file twice adds duplicates, since the issue doesn't ask
-        // for de-duplication the way the roster one explicitly did.
-        // Returns how many assignments were added.
         public static int ImportAssignments(Course course, string fileContent)
         {
             int added = 0;
