@@ -5,7 +5,6 @@ namespace Library.CMS
 {
     public static class RosterService
     {
-        // One line per student: Code,Name,Classification
         public static string BuildExportContent(Course course)
         {
             var sb = new StringBuilder();
@@ -18,12 +17,6 @@ namespace Library.CMS
             return sb.ToString();
         }
  
-        // Parses exported content and enrolls only students not already on this
-        // course's roster. Existing enrollments are left completely untouched -
-        // this reuses the same find-or-create-then-enroll logic as manually
-        // adding a student, and EnrollStudentInCourse already no-ops for anyone
-        // already enrolled, which is what makes this idempotent and non-destructive.
-        // Returns how many students were newly enrolled.
         public static int ImportRoster(Course course, string fileContent)
         {
             int newlyEnrolled = 0;
