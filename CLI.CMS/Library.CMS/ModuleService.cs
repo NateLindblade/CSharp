@@ -61,8 +61,6 @@ namespace Library.CMS
             return content;
         }
  
-        // Content items have no stable Id shown to the user, so callers select
-        // by position in the list - this just removes whatever is at that index.
         public static ModuleContent RemoveContentAt(Module module, int index)
         {
             if (index < 0 || index >= module.Content.Count)
@@ -75,8 +73,6 @@ namespace Library.CMS
             return removed;
         }
  
-        // Same removal, but by the content object itself rather than a position -
-        // useful when the caller already has the object (e.g. from a UI button click).
         public static bool RemoveContent(Module module, ModuleContent content)
         {
             return module.Content.Remove(content);
@@ -95,8 +91,6 @@ namespace Library.CMS
             return true;
         }
  
-        // A readable label for any of the three content types - used by whichever
-        // UI is displaying a module's contents.
         public static string DescribeContent(ModuleContent content)
         {
             if (content is PageContent page)
@@ -115,8 +109,6 @@ namespace Library.CMS
             return "Unknown content type";
         }
  
-        // Every file across every module in a course - used when opening a file (issue #21).
-        // Actually opening the file is platform-specific, so that stays in the UI layer.
         public static List<FileContent> GetAllFiles(Course course)
         {
             return course.Modules
