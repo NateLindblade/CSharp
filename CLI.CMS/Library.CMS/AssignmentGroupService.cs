@@ -39,7 +39,6 @@ namespace Library.CMS
             return true;
         }
  
-        // Returns false if the assignment was already in this group.
         public static bool AddAssignmentToGroup(AssignmentGroup group, Assignment assignment)
         {
             if (group.Assignments.Any(a => a.Id == assignment.Id))
@@ -56,8 +55,6 @@ namespace Library.CMS
             group.Weight = weight;
         }
  
-        // Averages a student's graded percentage within each weighted group,
-        // then combines those averages using each group's weight.
         public static double? CalculateFinalGrade(Course course, Student student)
         {
             var weightedGroups = course.AssignmentGroups.Where(g => g.Weight > 0).ToList();
