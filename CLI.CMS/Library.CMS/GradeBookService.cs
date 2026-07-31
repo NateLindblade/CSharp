@@ -5,9 +5,6 @@ namespace Library.CMS
 {
     public static class GradeBookService
     {
-        // Header row: Student,<assignment 1>,<assignment 2>,...
-        // Then one row per student, with their grade (blank if ungraded or
-        // not submitted) under each assignment's column.
         public static string BuildGradeBookCsv(Course course)
         {
             var sb = new StringBuilder();
