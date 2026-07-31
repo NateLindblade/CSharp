@@ -52,8 +52,6 @@ namespace Library.CMS
             return true;
         }
  
-        // Returns every course if semesterFilter is empty, otherwise only the
-        // ones matching it (case-insensitive) - used by issue #26.
         public static List<Course> FilterBySemester(string semesterFilter)
         {
             if (string.IsNullOrEmpty(semesterFilter))
@@ -66,9 +64,6 @@ namespace Library.CMS
                 .ToList();
         }
  
-        // Deep copies everything about a course except its roster and student
-        // submissions (issue #24). Built by composing the other services, so
-        // every copied piece gets its own real, unique Id the normal way.
         public static Course CopyCourse(int courseId)
         {
             var original = CmsRepository.Courses.FirstOrDefault(c => c.Id == courseId);
@@ -78,17 +73,12 @@ namespace Library.CMS
                 return null;
             }
  
-            // AddCourse already gives us an empty Roster - copies shouldn't bring students along.
             var newCourse = AddCourse(original.Code, original.Name, original.Description, original.Semester, original.Section);
  
-            // Copy assignments first, and remember which new Assignment matches
-            // which original one - modules and groups both reference assignments,
-            // and they need to point at the *new* copies, not the originals.
             var assignmentMap = new Dictionary<int, Assignment>();
  
             foreach (var assignment in original.Assignments)
             {
-                // AssignmentService.AddAssignment doesn't copy Submissions - excluded on purpose.
                 var newAssignment = AssignmentService.AddAssignment(
                     newCourse, assignment.Name, assignment.Description, assignment.AvailablePoints, assignment.DueDate);
  
