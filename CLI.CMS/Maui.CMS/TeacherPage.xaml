@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.CMS.TeacherPage"
+             Title="Teacher">
+
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25"
+        VerticalOptions="Center">
+
+        <Label
+            Text="Teacher Menu"
+            FontSize="24"
+            HorizontalOptions="Center" />
+
+        <Button
+            Text="Manage Students"
+            Clicked="OnManageStudentsClicked"
+            HorizontalOptions="Fill" />
+
+        <Button
+            Text="View Courses"
+            Clicked="OnViewCoursesClicked"
+            HorizontalOptions="Fill" />
+
+        <Button
+            Text="Back to Main Menu"
+            Clicked="OnBackClicked"
+            HorizontalOptions="Fill" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

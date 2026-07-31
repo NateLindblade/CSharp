@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.CMS.CourseSettingsPage"
+             Title="Course Settings">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label
+            Text="Letter Grade Cutoffs"
+            FontSize="20"
+            FontAttributes="Bold" />
+
+        <Label Text="Minimum % for an A:" />
+        <Entry x:Name="AMinEntry" Keyboard="Numeric" />
+
+        <Label Text="Minimum % for a B:" />
+        <Entry x:Name="BMinEntry" Keyboard="Numeric" />
+
+        <Label Text="Minimum % for a C:" />
+        <Entry x:Name="CMinEntry" Keyboard="Numeric" />
+
+        <Label Text="Minimum % for a D:" />
+        <Entry x:Name="DMinEntry" Keyboard="Numeric" />
+
+        <Button
+            Text="Save"
+            Clicked="OnSaveClicked" />
+
+        <Button
+            Text="Back"
+            Clicked="OnBackClicked" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

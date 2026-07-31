@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.CMS.ModuleManagementPage"
+             Title="Modules">
+
+    <Grid RowDefinitions="*,Auto,Auto" Padding="20">
+
+        <CollectionView
+            Grid.Row="0"
+            x:Name="ModulesList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,Auto,Auto" Padding="0,10">
+                        <Label
+                            Grid.Column="0"
+                            Text="{Binding Id, StringFormat='Module {0}'}"
+                            FontSize="18"
+                            VerticalOptions="Center" />
+                        <Button
+                            Grid.Column="1"
+                            Text="Manage Content"
+                            Clicked="OnManageContentClicked" />
+                        <Button
+                            Grid.Column="2"
+                            Text="Delete"
+                            Clicked="OnDeleteClicked" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Grid.Row="1"
+            Text="Add Module"
+            Clicked="OnAddClicked" />
+
+        <Button
+            Grid.Row="2"
+            Text="Back"
+            Clicked="OnBackClicked" />
+
+    </Grid>
+
+</ContentPage>

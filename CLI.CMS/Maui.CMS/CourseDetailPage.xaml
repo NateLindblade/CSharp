@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.CMS.CourseDetailPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <CollectionView x:Name="AnnouncementsList" IsVisible="False">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Padding="10" Margin="0,0,0,5" BackgroundColor="#FFF3CD">
+                            <Label Text="{Binding}" FontAttributes="Bold" />
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label
+                x:Name="CourseNameLabel"
+                FontSize="24"
+                HorizontalOptions="Center" />
+
+            <Label
+                x:Name="CurrentGradeLabel"
+                FontSize="28"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                IsVisible="False" />
+
+            <Button
+                x:Name="ManageRosterButton"
+                Text="Manage Roster"
+                Clicked="OnManageRosterClicked"
+                IsVisible="False" />
+
+            <Button
+                x:Name="ManageAssignmentsButton"
+                Text="Manage Assignments"
+                Clicked="OnManageAssignmentsClicked"
+                IsVisible="False" />
+
+            <Button
+                x:Name="ManageModulesButton"
+                Text="Manage Modules"
+                Clicked="OnManageModulesClicked"
+                IsVisible="False" />
+
+            <Button
+                x:Name="ManageAnnouncementsButton"
+                Text="Manage Announcements"
+                Clicked="OnManageAnnouncementsClicked"
+                IsVisible="False" />
+
+            <Button
+                x:Name="CourseSettingsButton"
+                Text="Course Settings"
+                Clicked="OnCourseSettingsClicked"
+                IsVisible="False" />
+
+            <Button
+                x:Name="ExportGradeBookButton"
+                Text="Export Grade Book (CSV)"
+                Clicked="OnExportGradeBookClicked"
+                IsVisible="False" />
+
+            <Label
+                Text="Modules"
+                FontSize="20"
+                FontAttributes="Bold" />
+            <CollectionView x:Name="ModulesList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding}" Padding="0,5" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label
+                Text="Assignments"
+                FontSize="20"
+                FontAttributes="Bold" />
+            <CollectionView x:Name="AssignmentsList">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding}" Padding="0,5" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label
+                x:Name="SubmitHeaderLabel"
+                Text="Submit an Assignment"
+                FontSize="20"
+                FontAttributes="Bold"
+                IsVisible="False" />
+            <Picker
+                x:Name="AssignmentPicker"
+                Title="Choose an assignment"
+                ItemDisplayBinding="{Binding Name}"
+                IsVisible="False" />
+            <Editor
+                x:Name="SubmissionEditor"
+                Placeholder="Type your response here"
+                HeightRequest="100"
+                IsVisible="False" />
+            <Button
+                x:Name="ChooseFileButton"
+                Text="Attach a File (optional)"
+                Clicked="OnChooseFileClicked"
+                IsVisible="False" />
+            <Label
+                x:Name="SelectedFileLabel"
+                FontAttributes="Italic"
+                IsVisible="False" />
+            <Button
+                x:Name="SubmitButton"
+                Text="Submit"
+                Clicked="OnSubmitClicked"
+                IsVisible="False" />
+
+            <Label
+                x:Name="GradesHeaderLabel"
+                Text="My Grades"
+                FontSize="20"
+                FontAttributes="Bold"
+                IsVisible="False" />
+            <CollectionView x:Name="GradesList" IsVisible="False">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding}" Padding="0,5" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <Label
+                x:Name="FinalGradeLabel"
+                FontAttributes="Bold"
+                IsVisible="False" />
+
+            <Button
+                Text="Back"
+                Clicked="OnBackClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

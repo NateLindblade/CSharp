@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.CMS.AnnouncementManagementPage"
+             Title="Announcements">
+
+    <Grid RowDefinitions="*,Auto,Auto" Padding="20">
+
+        <CollectionView
+            Grid.Row="0"
+            x:Name="AnnouncementsList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding}" FontSize="16" Padding="0,10" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Grid.Row="1"
+            Text="Add Announcement"
+            Clicked="OnAddClicked" />
+
+        <Button
+            Grid.Row="2"
+            Text="Back"
+            Clicked="OnBackClicked" />
+
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Maui.CMS.StudentCoursesPage">
+
+    <Grid RowDefinitions="*,Auto" Padding="20">
+
+        <CollectionView
+            Grid.Row="0"
+            x:Name="CoursesList"
+            SelectionMode="Single"
+            SelectionChanged="OnCourseSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label
+                        Text="{Binding Name}"
+                        FontSize="18"
+                        Padding="0,10" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button
+            Grid.Row="1"
+            Text="Back"
+            Clicked="OnBackClicked" />
+
+    </Grid>
+
+</ContentPage>
