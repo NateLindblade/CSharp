@@ -2,9 +2,6 @@ using System.Collections.Generic;
  
 namespace Library.CMS
 {
-    // This holds the actual data (and the counters that generate stable Ids).
-    // Both CLI.CMS and Maui.CMS will point at this same repository, so they
-    // share one copy of the data instead of each keeping their own.
     public static class CmsRepository
     {
         public static List<Course> Courses = new List<Course>();
